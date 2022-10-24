@@ -1,12 +1,25 @@
 package ua.lviv.lgs.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
-
+@Entity
+@Table(name = "faculty")
 public class Faculty {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "mathScore")
     private int mathScore;
+    @Column(name = "historyScore")
     private int historyScore;
+    @Column(name = "englishScore")
     private int englishScore;
 
     public Faculty(String name, int mathScore, int historyScore, int englishScore) {

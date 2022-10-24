@@ -1,23 +1,38 @@
 package ua.lviv.lgs.domain;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.Objects;
-
+@Entity
+@Table(name = "information")
 public class Information {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private Integer userId;
-    private Integer facultyId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "faculty_id", referencedColumnName = "id")
+    private Faculty faculty;
+    @Column(name = "score")
     private int score;
 
-    public Information(Integer id, Integer userId, Integer facultyId, int score) {
+    public Information(Integer id, User user, Faculty faculty, int score) {
         this.id = id;
-        this.userId = userId;
-        this.facultyId = facultyId;
+        this.user = user;
+        this.faculty = faculty;
         this.score = score;
     }
 
-    public Information(Integer userId, Integer facultyId, int score) {
-        this.userId = userId;
-        this.facultyId = facultyId;
+    public Information(User user, Faculty faculty, int score) {
+        this.user = user;
+        this.faculty = faculty;
         this.score = score;
     }
 
@@ -32,20 +47,20 @@ public class Information {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Integer getFacultyId() {
-        return facultyId;
+    public Faculty getFacultyId() {
+        return faculty;
     }
 
-    public void setFacultyId(Integer facultyId) {
-        this.facultyId = facultyId;
+    public void setFacultyId(Faculty faculty) {
+        this.faculty = faculty;
     }
 
     public int getScore() {
@@ -61,20 +76,20 @@ public class Information {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Information that = (Information) o;
-        return score == that.score && Objects.equals(id, that.id) && Objects.equals(userId, that.userId) && Objects.equals(facultyId, that.facultyId);
+        return score == that.score && Objects.equals(id, that.id) && Objects.equals(user, that.user) && Objects.equals(faculty, that.faculty);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, facultyId, score);
+        return Objects.hash(id, user, faculty, score);
     }
 
     @Override
     public String toString() {
         return "Information{" +
                 "id=" + id +
-                ", userId=" + userId +
-                ", facultyId=" + facultyId +
+                ", user=" + user +
+                ", faculty=" + faculty +
                 ", score=" + score +
                 '}';
     }
