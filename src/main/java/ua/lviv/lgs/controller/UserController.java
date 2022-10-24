@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ua.lviv.lgs.dao.UserRepository;
+import org.springframework.web.servlet.ModelAndView;
+import ua.lviv.lgs.domain.Faculty;
 import ua.lviv.lgs.domain.User;
+import ua.lviv.lgs.service.FacultyService;
 import ua.lviv.lgs.service.UserService;
 
 @Controller
@@ -17,6 +19,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private FacultyService facultyService;
 
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -49,10 +53,18 @@ public class UserController {
         return "login";
     }
 
+
+
     @RequestMapping(value ="/home", method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "home";
+    public ModelAndView welcome() {
+        ModelAndView map = new ModelAndView("home");
+        map.addObject("faculties", facultyService.getAllMembers());
+
+        return map;
     }
 
-
+    @RequestMapping(value ="/faculty-registration", method = RequestMethod.GET)
+    public ModelAndView createPeriodical() {
+        return new ModelAndView("facultyRegistration", "faculty", new Faculty());
+    }
 }
