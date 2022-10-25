@@ -21,6 +21,8 @@ public class User {
     private UserRole role;
     @Column(name = "password")
     private String password;
+    @Lob
+    private String encodedImage;
 
     public User() {
     }
@@ -47,6 +49,14 @@ public class User {
         this.lastName = lastname;
         this.role = role;
         this.password = password;
+    }
+
+    public String getEncodedImage() {
+        return encodedImage;
+    }
+
+    public void setEncodedImage(String encodedImage) {
+        this.encodedImage = encodedImage;
     }
 
     public Integer getId() {

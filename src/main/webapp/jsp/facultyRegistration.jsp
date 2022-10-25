@@ -43,7 +43,7 @@
 
 
 
-            <form:form method="POST" action="${contextPath}/FacultyRegister" modelAttribute="faculty">
+            <form:form method="POST" action="${contextPath}/FacultyRegister" modelAttribute="faculty" >
                 <table>
                     <tr>
                         <td><form:label path="name">Name</form:label></td>
@@ -53,18 +53,18 @@
                             <form:option value="TRE-faculty">Телекомунікації та радіотехніка</form:option>
                         </form:select></td>
                     </tr>
-                    <tr>
-                        <td><form:label path="mathScore">Бал з математики</form:label></td>
-                        <td><form:input path="mathScore" /></td>
-                    </tr>
-                    <tr>
-                        <td><form:label path="historyScore">Бал з історії України</form:label></td>
-                        <td><form:input path="historyScore" /></td>
-                    </tr>
-                    <tr>
-                        <td><form:label path="englishScore">Бал з Англійської мови</form:label></td>
-                        <td><form:input path="englishScore" /></td>
-                    </tr>
+<%--                    <tr>--%>
+<%--                        <td><form:label path="mathScore">Бал з математики</form:label></td>--%>
+<%--                        <td><form:input path="mathScore" /></td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td><form:label path="historyScore">Бал з історії України</form:label></td>--%>
+<%--                        <td><form:input path="historyScore" /></td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td><form:label path="englishScore">Бал з Англійської мови</form:label></td>--%>
+<%--                        <td><form:input path="englishScore" /></td>--%>
+<%--                    </tr>--%>
                     <tr>
                         <td><input type="submit" value="Submit" /></td>
                     </tr>

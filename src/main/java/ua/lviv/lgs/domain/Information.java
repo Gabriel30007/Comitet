@@ -22,21 +22,58 @@ public class Information {
     private Faculty faculty;
     @Column(name = "score")
     private int score;
+    @Column(name = "mathScore")
+    private int mathScore;
+    @Column(name = "historyScore")
+    private int historyScore;
+    @Column(name = "englishScore")
+    private int englishScore;
 
-    public Information(Integer id, User user, Faculty faculty, int score) {
+
+    public Information(Integer id, User user, Faculty faculty, int score, int mathScore, int historyScore, int englishScore) {
         this.id = id;
         this.user = user;
         this.faculty = faculty;
         this.score = score;
-    }
-
-    public Information(User user, Faculty faculty, int score) {
-        this.user = user;
-        this.faculty = faculty;
-        this.score = score;
+        this.mathScore = mathScore;
+        this.historyScore = historyScore;
+        this.englishScore = englishScore;
     }
 
     public Information() {
+    }
+
+    public Information(User user, Faculty faculty, int score, int mathScore, int historyScore, int englishScore) {
+        this.user = user;
+        this.faculty = faculty;
+        this.score = score;
+        this.mathScore = mathScore;
+        this.historyScore = historyScore;
+        this.englishScore = englishScore;
+    }
+
+    public int getMathScore() {
+        return mathScore;
+    }
+
+    public void setMathScore(int mathScore) {
+        this.mathScore = mathScore;
+    }
+
+    public int getHistoryScore() {
+        return historyScore;
+    }
+
+    public void setHistoryScore(int historyScore) {
+        this.historyScore = historyScore;
+    }
+
+    public int getEnglishScore() {
+        return englishScore;
+    }
+
+    public void setEnglishScore(int englishScore) {
+        this.englishScore = englishScore;
     }
 
     public Integer getId() {
@@ -55,11 +92,11 @@ public class Information {
         this.user = user;
     }
 
-    public Faculty getFacultyId() {
+    public Faculty getFaculty() {
         return faculty;
     }
 
-    public void setFacultyId(Faculty faculty) {
+    public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
 

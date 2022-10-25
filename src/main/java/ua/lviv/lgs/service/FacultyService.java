@@ -6,6 +6,7 @@ import ua.lviv.lgs.dao.FacultyRepository;
 import ua.lviv.lgs.domain.Faculty;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FacultyService {
@@ -19,5 +20,8 @@ public class FacultyService {
 
     public List<Faculty> getAllMembers(){
         return facultyRepository.findAll();
+    }
+    public Optional<Faculty> findById(Integer id){
+       return facultyRepository.findById(id);
     }
 }
