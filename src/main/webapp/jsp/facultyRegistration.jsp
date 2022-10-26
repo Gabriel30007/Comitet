@@ -19,7 +19,7 @@
         <h3 class="w3-bar-item">Menu</h3>
         <a href="/home" class="w3-bar-item w3-button">Home</a>
         <a href="/faculty-registration" class="w3-bar-item w3-button">Faculty registration</a>
-        <a href="#" class="w3-bar-item w3-button">Rating</a>
+        <a href="/informations" class="w3-bar-item w3-button">Rating</a>
     </div>
 
 
@@ -53,10 +53,10 @@
                             <form:option value="TRE-faculty">Телекомунікації та радіотехніка</form:option>
                         </form:select></td>
                     </tr>
-<%--                    <tr>--%>
-<%--                        <td><form:label path="mathScore">Бал з математики</form:label></td>--%>
-<%--                        <td><form:input path="mathScore" /></td>--%>
-<%--                    </tr>--%>
+                    <tr>
+                        <td><form:label path="gpa">Середній бал для вступу</form:label></td>
+                        <td><form:input path="gpa" /></td>
+                    </tr>
 <%--                    <tr>--%>
 <%--                        <td><form:label path="historyScore">Бал з історії України</form:label></td>--%>
 <%--                        <td><form:input path="historyScore" /></td>--%>

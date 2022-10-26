@@ -28,6 +28,11 @@ public class InformationController {
     @Autowired
     InformationService informationService;
 
+
+    @RequestMapping(value = "/informations", method = RequestMethod.GET)
+    public ModelAndView getAllItems() {
+        return getInformation();
+    }
     @RequestMapping(value = "information", method = RequestMethod.POST)
     public ModelAndView create(@RequestParam Integer facultyId) {
         Faculty faculty = facultyService.findById(facultyId).get();
@@ -37,8 +42,8 @@ public class InformationController {
     }
 
     private ModelAndView getInformation() {
-        ModelAndView map = new ModelAndView("information");
-        map.addObject("informationItems", informationService.findAll());
+        ModelAndView map = new ModelAndView("rating");
+        map.addObject("infoItems", informationService.findAll());
         return map;
     }
 
@@ -60,6 +65,7 @@ public class InformationController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String userEmail = auth.getName();
         User user = userService.findByEmail(userEmail);
+
         Information information=new Information();
         information.setMathScore(mathScore);
         information.setHistoryScore(historyScore);

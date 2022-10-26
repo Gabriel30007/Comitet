@@ -29,7 +29,7 @@
         <h3 class="w3-bar-item">Menu</h3>
         <a href="/home" class="w3-bar-item w3-button">Home</a>
         <a href="/faculty-registration" class="w3-bar-item w3-button">Faculty registration</a>
-        <a href="#" class="w3-bar-item w3-button">Rating</a>
+        <a href="/informations" class="w3-bar-item w3-button">Rating</a>
     </div>
 
 
@@ -67,6 +67,7 @@
                             <tr var="iteration">
                                 <th scope="row">${iteration+1}</th>
                                 <td>${currentFaculty.name}</td>
+                                <td>${currentFaculty.gpa}</td>
 
                             </tr>
                             <form:form action="${contextPath}/informationReg" method="POST" enctype="multipart/form-data">

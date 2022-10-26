@@ -15,19 +15,29 @@ public class Faculty {
     private Integer id;
     @Column(name = "name")
     private String name;
+    @Column(name = "gpa")
+    private int gpa;
 
-
-    public Faculty(String name) {
+    public Faculty(String name, int gpa) {
         this.name = name;
-
+        this.gpa=gpa;
     }
 
     public Faculty() {
     }
 
-    public Faculty(Integer id, String name) {
+    public Faculty(Integer id, String name, int gpa) {
         this.id = id;
         this.name = name;
+        this.gpa=gpa;
+    }
+
+    public int getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(int gpa) {
+        this.gpa = gpa;
     }
 
     public Integer getId() {
@@ -46,18 +56,17 @@ public class Faculty {
         this.name = name;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Faculty faculty = (Faculty) o;
-        return Objects.equals(id, faculty.id) && Objects.equals(name, faculty.name);
+        return gpa == faculty.gpa && Objects.equals(id, faculty.id) && Objects.equals(name, faculty.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, gpa);
     }
 
     @Override
@@ -65,6 +74,7 @@ public class Faculty {
         return "Faculty{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", gpa=" + gpa +
                 '}';
     }
 }
