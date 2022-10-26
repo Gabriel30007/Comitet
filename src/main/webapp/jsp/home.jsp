@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -27,13 +27,17 @@
     <!-- Sidebar -->
     <div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
         <h3 class="w3-bar-item">Menu</h3>
+
         <a href="/home" class="w3-bar-item w3-button">Home</a>
+        <security:authorize access="hasRole('ROLE_ADMIN')">
         <a href="/faculty-registration" class="w3-bar-item w3-button">Faculty registration</a>
+        </security:authorize>
+        <security:authorize access="hasRole('ROLE_ADMIN')">
         <a href="/informations" class="w3-bar-item w3-button">Rating</a>
+        </security:authorize>
     </div>
 
 
-    <!-- Page Content -->
     <div style="margin-left: 10%">
 
         <div class="w3-container w3-teal">
@@ -70,12 +74,13 @@
                                 <td>${currentFaculty.gpa}</td>
 
                             </tr>
+                            <security:authorize access="hasRole('ROLE_ADMIN')">
                             <form:form action="${contextPath}/informationReg" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" value="${currentFaculty.id}"
                                        class="form-control" name="facultyId">
                                 <input type="submit" value="Submit" />
                             </form:form>
-
+                            </security:authorize>
                         </c:forEach>
                         </div>
                     </c:if>

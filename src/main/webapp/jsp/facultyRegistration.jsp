@@ -2,14 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="ISO-8859-1">
     <title>Periodicals</title>
-    <!-- CSS only -->
-<%--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">--%>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 <div class="container">
@@ -18,8 +17,12 @@
     <div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
         <h3 class="w3-bar-item">Menu</h3>
         <a href="/home" class="w3-bar-item w3-button">Home</a>
-        <a href="/faculty-registration" class="w3-bar-item w3-button">Faculty registration</a>
-        <a href="/informations" class="w3-bar-item w3-button">Rating</a>
+        <security:authorize access="hasRole('ROLE_ADMIN')">
+            <a href="/faculty-registration" class="w3-bar-item w3-button">Faculty registration</a>
+        </security:authorize>
+        <security:authorize access="hasRole('ROLE_ADMIN')">
+            <a href="/informations" class="w3-bar-item w3-button">Rating</a>
+        </security:authorize>
     </div>
 
 
@@ -57,14 +60,7 @@
                         <td><form:label path="gpa">Середній бал для вступу</form:label></td>
                         <td><form:input path="gpa" /></td>
                     </tr>
-<%--                    <tr>--%>
-<%--                        <td><form:label path="historyScore">Бал з історії України</form:label></td>--%>
-<%--                        <td><form:input path="historyScore" /></td>--%>
-<%--                    </tr>--%>
-<%--                    <tr>--%>
-<%--                        <td><form:label path="englishScore">Бал з Англійської мови</form:label></td>--%>
-<%--                        <td><form:input path="englishScore" /></td>--%>
-<%--                    </tr>--%>
+
                     <tr>
                         <td><input type="submit" value="Submit" /></td>
                     </tr>
