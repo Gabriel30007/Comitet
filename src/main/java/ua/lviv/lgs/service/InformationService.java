@@ -15,9 +15,6 @@ public class InformationService {
     public void save(Information information){
         informationRepository.save(information);
     }
-    public void delete(Information information){
-        informationRepository.delete(information);
-    }
     public List<Information> findAll(){
         return informationRepository.findAll();
     }
